@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCMRTMAConnector", "LCMRTMAConnector\LCMRTMAConnector.csproj", "{39A43B49-B778-44E2-90CC-B77BDB2D6058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lcm", "..\lcm-1.3.1\lcm-dotnet\lcm\lcm.csproj", "{1A945928-4DDA-465B-949B-7A867860EDCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lcm-server", "..\lcm-1.3.1\lcm-dotnet\lcm-server\lcm-server.csproj", "{F64DA725-64FE-4C9A-B126-7B582DF503EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39A43B49-B778-44E2-90CC-B77BDB2D6058}.Debug|x86.ActiveCfg = Debug|x86
+		{39A43B49-B778-44E2-90CC-B77BDB2D6058}.Debug|x86.Build.0 = Debug|x86
+		{39A43B49-B778-44E2-90CC-B77BDB2D6058}.Release|x86.ActiveCfg = Release|x86
+		{39A43B49-B778-44E2-90CC-B77BDB2D6058}.Release|x86.Build.0 = Release|x86
+		{1A945928-4DDA-465B-949B-7A867860EDCF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1A945928-4DDA-465B-949B-7A867860EDCF}.Debug|x86.Build.0 = Debug|Any CPU
+		{1A945928-4DDA-465B-949B-7A867860EDCF}.Release|x86.ActiveCfg = Release|Any CPU
+		{1A945928-4DDA-465B-949B-7A867860EDCF}.Release|x86.Build.0 = Release|Any CPU
+		{F64DA725-64FE-4C9A-B126-7B582DF503EE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F64DA725-64FE-4C9A-B126-7B582DF503EE}.Debug|x86.Build.0 = Debug|Any CPU
+		{F64DA725-64FE-4C9A-B126-7B582DF503EE}.Release|x86.ActiveCfg = Release|Any CPU
+		{F64DA725-64FE-4C9A-B126-7B582DF503EE}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
