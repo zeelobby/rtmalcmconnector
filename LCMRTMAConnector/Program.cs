@@ -27,11 +27,19 @@ namespace LCMRTMAConnector
 
             var appLCM = new LCM.LCM.LCM();
 
-            //LCMReceiver receiver = new LCMReceiver();
-            //receiver.receive(props.LcmParseRate);
+            LCMReceiver lcmReceiver = new LCMReceiver();
+            lcmReceiver.receive(props.LcmParseRate);
 
-            LCMTransmitter transmitter = new LCMTransmitter();
-            transmitter.transmit();
+            LCMTransmitter lcmTransmitter = new LCMTransmitter();
+
+            RTMAReceiver rtmaReceiver = new RTMAReceiver("localhost:7111", lcmTransmitter);
+            
+            while (true) {
+
+                rtmaReceiver.receive();
+ 
+                System.Threading.Thread.Sleep(1000);
+            };
         }
     }
 }

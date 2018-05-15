@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using LCM;
 using LCM.LCM;
+using mavlcm;
+using LCMRTMAConnector.Util;
 
 namespace LCMRTMAConnector
 {
@@ -16,20 +18,13 @@ namespace LCMRTMAConnector
             this.appLCM = new LCM.LCM.LCM();
         }
 
-        public void transmit()
+        public void transmit(int msgType, LCMEncodable lcmOut)
         {
             try
             {
-                Messages.bmi2ec_t msg = new Messages.bmi2ec_t();
-                TimeSpan span = DateTime.Now - new DateTime(1970, 1, 1);
-                msg.timestamp = span.Ticks * 100;
-                msg.feature_values = new float[] { 1232.1232f, 1232.1111f, 12.2423f, 123123f };
+                Console.WriteLine("Transmitting {0} message", msgType);
 
-                System.Threading.Thread.Sleep(10000);
-
-                Console.WriteLine("Sending Message");
-
-                appLCM.Publish("EXAMPLE", msg);
+                appLCM.Publish("EXAMPLE", lcmOut);
             }
             catch (Exception e)
             {

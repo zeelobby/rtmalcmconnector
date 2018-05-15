@@ -10,6 +10,21 @@
     <AssemblyName>LCMRTMAConnector</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <ProductVersion>9.0.21022</ProductVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +45,13 @@
     <ExternalConsole>true</ExternalConsole>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LCMRTMAConnector.MainClass</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dragonfly.NET">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Dragonfly\lang\dot_net\Dragonfly.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -52,17 +73,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Messages\bmi_message_defs.cs" />
+    <Compile Include="Messages\MDF_NEURAL_DECODER_OUTPUT.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transmission\LCMTransmitter.cs" />
     <Compile Include="Receipt\LCMReceiver.cs" />
-    <Compile Include="Conversion\LCM2RTMAConverter.cs" />
-    <Compile Include="Conversion\RTMA2LCMConverter.cs" />
+    <Compile Include="Util\Utils.cs" />
     <Compile Include="Receipt\RTMAReceiver.cs" />
     <Compile Include="Transmission\RTMATransmitter.cs" />
     <Compile Include="Properties\ApplicationProperties.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Messages\bmi_message_defs.lcm" />
     <None Include="packages.config" />
     <None Include="Properties\props.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -74,7 +98,18 @@
       <Name>lcm</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Messages\bmi_message_defs.h" />
   </ItemGroup>

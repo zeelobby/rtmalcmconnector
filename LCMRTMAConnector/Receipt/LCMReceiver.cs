@@ -1,5 +1,6 @@
 ﻿using System;
 using LCM;
+using mavlcm;
 namespace LCMRTMAConnector.Receipt
 {
     public class LCMReceiver
@@ -35,12 +36,13 @@ namespace LCMRTMAConnector.Receipt
 
                 if (channel == "EXAMPLE")
                 {
-                    Messages.bmi2ec_t msg = new Messages.bmi2ec_t(dins);
+                    mavlcm.MDF_NEURAL_DECODER_OUTPUT msg = new mavlcm.MDF_NEURAL_DECODER_OUTPUT(dins);
 
                     Console.WriteLine("Received message of the type example_t:");
+                    Console.WriteLine("  header   = {0}", msg.header);
                     Console.WriteLine("  timestamp   = {0:D}", msg.timestamp);
                     Console.WriteLine("  position    = ({0:N}, {1:N}, {2:N}, {3:N})",
-                                      msg.feature_values[0], msg.feature_values[1], msg.feature_values[2], msg.feature_values[4]);
+                                      msg.decoderoutput[0], msg.decoderoutput[1], msg.decoderoutput[2], msg.decoderoutput[3]);
                 }
             }
         }

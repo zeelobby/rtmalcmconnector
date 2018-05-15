@@ -65,7 +65,6 @@
 #define MT_RIGHT_COMMANDED_VELOCITIES		254 // endpoint and ROC velocities sent to right MPL
 #define MT_LEFT_COMMANDED_VELOCITIES		255 // endpoint and ROC velocities sent to left MPL
 #define MT_CLIENT_SAVE_STATUS				272 // Coordinator Client is starting/done copying session files
-#define MT_NEURO_DECODER
 
 // Message definitions
 typedef struct {
