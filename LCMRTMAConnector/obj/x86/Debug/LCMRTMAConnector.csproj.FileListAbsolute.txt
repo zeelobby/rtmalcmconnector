@@ -20,3 +20,8 @@
 /Development/mavrcs/LCMRTMAConnector/LCMRTMAConnector/bin/Debug/xunit.execution.desktop.xml
 /Development/mavrcs/LCMRTMAConnector/LCMRTMAConnector/obj/x86/Debug/LCMRTMAConnector.exe
 /Development/mavrcs/LCMRTMAConnector/LCMRTMAConnector/obj/x86/Debug/LCMRTMAConnector.pdb
+C:\Users\MindFlight2\Documents\mindflight\development\rtmalcmconnector\LCMRTMAConnector\obj\x86\Debug\LCMRTMAConnector.exe
+C:\Users\MindFlight2\Documents\mindflight\development\rtmalcmconnector\LCMRTMAConnector\obj\x86\Debug\LCMRTMAConnector.pdb
+C:\Users\MindFlight2\Documents\mavrcs\development\rtmalcmconnector\LCMRTMAConnector\obj\x86\Debug\LCMRTMAConnector.exe
+C:\Users\MindFlight2\Documents\mavrcs\development\rtmalcmconnector\LCMRTMAConnector\obj\x86\Debug\LCMRTMAConnector.pdb
+C:\Users\MindFlight2\Documents\mavrcs\development\rtmalcmconnector\LCMRTMAConnector\obj\x86\Debug\LCMRTMAConnector.csprojResolveAssemblyReference.cache

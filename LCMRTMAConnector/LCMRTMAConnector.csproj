@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\xunit.core.2.3.1\build\xunit.core.props" Condition="Exists('..\packages\xunit.core.2.3.1\build\xunit.core.props')" />
   <PropertyGroup>
@@ -54,39 +54,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\..\lcm\Messages\Empty.cs">
-      <Link>Messages\Empty.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\Twist.cs">
-      <Link>Messages\Twist.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\Vector3.cs">
-      <Link>Messages\Vector3.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\bmi2ec_t.cs">
-      <Link>Messages\bmi2ec_t.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\bmi_feature_t.cs">
-      <Link>Messages\bmi_feature_t.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\config_t.cs">
-      <Link>Messages\config_t.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\drl2vem_t.cs">
-      <Link>Messages\drl2vem_t.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\ec2drl_t.cs">
-      <Link>Messages\ec2drl_t.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\platform_data_t.cs">
-      <Link>Messages\platform_data_t.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\vem2ec_t.cs">
-      <Link>Messages\vem2ec_t.cs</Link>
-    </Compile>
-    <Compile Include="..\..\lcm\Messages\vem2gui_t.cs">
-      <Link>Messages\vem2gui_t.cs</Link>
-    </Compile>
     <Compile Include="Transmission\LCMTransmitter.cs" />
     <Compile Include="Receipt\LCMReceiver.cs" />
     <Compile Include="Conversion\LCM2RTMAConverter.cs" />
@@ -107,11 +74,9 @@
       <Name>lcm</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Messages\" />
-    <Folder Include="Transmission\" />
-    <Folder Include="Receipt\" />
-    <Folder Include="Conversion\" />
+    <Content Include="Messages\bmi_message_defs.h" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\xunit.core.2.3.1\build\xunit.core.targets" Condition="Exists('..\packages\xunit.core.2.3.1\build\xunit.core.targets')" />
