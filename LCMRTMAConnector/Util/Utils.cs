@@ -26,10 +26,30 @@ namespace LCMRTMAConnector.Util
             return null; // Or throw an exception
         }
 
+        public static void rtmaTransmitterMessage(string message, params object[] arg0)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(message, arg0);
+            Console.ResetColor();
+        }
 
         public static void rtmaReceiverMessage(string message, params object[] arg0)
         {
             Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine(message, arg0);
+            Console.ResetColor();
+        }
+
+        public static void lcmTransmitterMessage(string message, params object[] arg0)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(message, arg0);
+            Console.ResetColor();
+        }
+
+        public static void lcmReceiverMessage(string message, params object[] arg0)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine(message, arg0);
             Console.ResetColor();
         }

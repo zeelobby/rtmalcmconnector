@@ -2,6 +2,6 @@ package mavlcm;
 
 struct MDF_NEURAL_DECODER_OUTPUT {
 	string header;
-	double decoderoutput[4];
+	double decoderoutput[14];
 	int64_t timestamp;		// timestamp (Neuroport clock cycles) of data packet the resulted in these commands
 }

@@ -1,6 +1,11 @@
 ﻿using System;
 using LCM;
 using mavlcm;
+using LCMRTMAConnector.Util;
+using LCMRTMAConnector.Properties;
+using LCMRTMAConnector.Transmission;
+using Dragonfly;
+
 namespace LCMRTMAConnector.Receipt
 {
     public class LCMReceiver
@@ -12,12 +17,12 @@ namespace LCMRTMAConnector.Receipt
             this.lCM = new LCM.LCM.LCM();
         }
 
-        public void receive(int lCMReceiveRate)
+        public void receive(int lCMReceiveRate, ApplicationProperties props, RTMATransmitter rtmaTransmitter)
         {
 
             try
             {
-                lCM.SubscribeAll(new SimpleSubscriber());
+                lCM.SubscribeAll(new SimpleSubscriber(props, rtmaTransmitter));
 
 
             }
@@ -30,19 +35,32 @@ namespace LCMRTMAConnector.Receipt
 
         internal class SimpleSubscriber : LCM.LCM.LCMSubscriber
         {
+            ApplicationProperties props;
+            RTMATransmitter rtmaTransmitter;
+
+            public SimpleSubscriber(ApplicationProperties props, RTMATransmitter rtmaTransmitter) : base()
+            {
+                this.props = props;
+                this.rtmaTransmitter = rtmaTransmitter;
+            }
+
             public void MessageReceived(LCM.LCM.LCM lcm, string channel, LCM.LCM.LCMDataInputStream dins)
             {
-                Console.WriteLine("RECV: " + channel);
+                Utils.lcmReceiverMessage("RECV: " + channel);
 
-                if (channel == "EXAMPLE")
+                if (channel == props.Lcm.Channels.neuralDecoder)
                 {
-                    mavlcm.MDF_NEURAL_DECODER_OUTPUT msg = new mavlcm.MDF_NEURAL_DECODER_OUTPUT(dins);
+                    mavlcm.MDF_NEURAL_DECODER_OUTPUT lcmIn = new mavlcm.MDF_NEURAL_DECODER_OUTPUT(dins);
 
-                    Console.WriteLine("Received message of the type example_t:");
-                    Console.WriteLine("  header   = {0}", msg.header);
-                    Console.WriteLine("  timestamp   = {0:D}", msg.timestamp);
-                    Console.WriteLine("  position    = ({0:N}, {1:N}, {2:N}, {3:N})",
-                                      msg.decoderoutput[0], msg.decoderoutput[1], msg.decoderoutput[2], msg.decoderoutput[3]);
+                    Utils.lcmReceiverMessage("Received message of the type MDF_NEURAL_DECODER_OUTPUT:");
+                    Utils.lcmReceiverMessage("  header   = {0}", lcmIn.header);
+                    Utils.lcmReceiverMessage("  timestamp   = {0:D}", lcmIn.timestamp);
+                    Utils.lcmReceiverMessage("  position    = ({0:N}, {1:N}, {2:N}, {3:N})",
+                                      lcmIn.decoderoutput[0], lcmIn.decoderoutput[1], lcmIn.decoderoutput[2], lcmIn.decoderoutput[3]);
+                    MDF.NEURAL_DECODER_OUTPUT rtmaOut = new MDF.NEURAL_DECODER_OUTPUT();
+                    rtmaOut.decoderoutput = lcmIn.decoderoutput;
+                    rtmaOut.timestamp = (int)lcmIn.timestamp;
+                    rtmaTransmitter.transmit(MID.NEURAL_DECODER, MT.NEURAL_DECODER_OUTPUT, rtmaOut);
                 }
             }
         }

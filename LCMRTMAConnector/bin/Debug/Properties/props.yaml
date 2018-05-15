@@ -1,3 +1,10 @@
 ﻿---
-lcm-parse-rate: 1000
+lcm:
+    parseRate: 1000
+    channels:
+        neuralDecoder: NEURAL_DECODER_OUTPUT
+
+rtma:
+    host: localhost
+    port: 7111
 ...

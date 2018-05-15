@@ -27,11 +27,12 @@ namespace LCMRTMAConnector.Receipt
 
             try
             {
-                    m = mod.ReadMessage(Module.ReadType.NonBlocking);
+                m = mod.ReadMessage(Module.ReadType.NonBlocking);
+
+                if (m.msg_type > 100)
+                {
 
                     Utils.rtmaReceiverMessage("Received message {0}", m.msg_type);
-
-                    if (m.msg_type > 100) {
 
                     object o;
                     if (m.msg_type == MT.NEURAL_DECODER_OUTPUT)
@@ -44,8 +45,8 @@ namespace LCMRTMAConnector.Receipt
                         lcmOut.decoderoutput = rtmaIn.decoderoutput;
                         lcmOut.timestamp = rtmaIn.timestamp;
                         lcmOut.header = "test";
-                        
-                        lCMTransmitter.transmit(m.msg_type, lcmOut);
+
+                        lCMTransmitter.transmit("NEURAL_DECODER_OUTPUT", lcmOut);
                     }
                 }
             }
@@ -56,7 +57,12 @@ namespace LCMRTMAConnector.Receipt
             }
         }
 
-        
+        public void disconnect()
+        {
+            mod.DisconnectFromMMM();
+        }
+
+
 
     }
 }

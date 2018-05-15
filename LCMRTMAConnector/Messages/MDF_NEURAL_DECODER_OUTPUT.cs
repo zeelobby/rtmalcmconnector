@@ -18,7 +18,7 @@ namespace mavlcm
  
         public MDF_NEURAL_DECODER_OUTPUT()
         {
-            decoderoutput = new double[4];
+            decoderoutput = new double[14];
         }
  
         public static readonly ulong LCM_FINGERPRINT;
@@ -52,7 +52,7 @@ namespace mavlcm
             byte[] __strbuf = null;
             __strbuf = System.Text.Encoding.GetEncoding("US-ASCII").GetBytes(this.header); outs.Write(__strbuf.Length+1); outs.Write(__strbuf, 0, __strbuf.Length); outs.Write((byte) 0); 
  
-            for (int a = 0; a < 4; a++) {
+            for (int a = 0; a < 14; a++) {
                 outs.Write(this.decoderoutput[a]); 
             }
  
@@ -84,8 +84,8 @@ namespace mavlcm
             byte[] __strbuf = null;
             __strbuf = new byte[ins.ReadInt32()-1]; ins.ReadFully(__strbuf); ins.ReadByte(); this.header = System.Text.Encoding.GetEncoding("US-ASCII").GetString(__strbuf);
  
-            this.decoderoutput = new double[(int) 4];
-            for (int a = 0; a < 4; a++) {
+            this.decoderoutput = new double[(int) 14];
+            for (int a = 0; a < 14; a++) {
                 this.decoderoutput[a] = ins.ReadDouble();
             }
  
@@ -98,8 +98,8 @@ namespace mavlcm
             mavlcm.MDF_NEURAL_DECODER_OUTPUT outobj = new mavlcm.MDF_NEURAL_DECODER_OUTPUT();
             outobj.header = this.header;
  
-            outobj.decoderoutput = new double[(int) 4];
-            for (int a = 0; a < 4; a++) {
+            outobj.decoderoutput = new double[(int) 14];
+            for (int a = 0; a < 14; a++) {
                 outobj.decoderoutput[a] = this.decoderoutput[a];
             }
  

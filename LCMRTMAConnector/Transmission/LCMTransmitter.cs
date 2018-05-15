@@ -18,13 +18,13 @@ namespace LCMRTMAConnector
             this.appLCM = new LCM.LCM.LCM();
         }
 
-        public void transmit(int msgType, LCMEncodable lcmOut)
+        public void transmit(string msgType, LCMEncodable lcmOut)
         {
             try
             {
-                Console.WriteLine("Transmitting {0} message", msgType);
+                Utils.lcmTransmitterMessage("Transmitting {0} message", msgType);
 
-                appLCM.Publish("EXAMPLE", lcmOut);
+                appLCM.Publish(msgType, lcmOut);
             }
             catch (Exception e)
             {

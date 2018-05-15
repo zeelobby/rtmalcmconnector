@@ -6,6 +6,7 @@ using YamlDotNet.Serialization.NamingConventions;
 using Xunit.Abstractions;
 using LCMRTMAConnector.Receipt;
 using LCMRTMAConnector.Properties;
+using LCMRTMAConnector.Transmission;
 
 namespace LCMRTMAConnector
 {
@@ -20,26 +21,29 @@ namespace LCMRTMAConnector
             using (var input = File.OpenText("Properties/props.yaml"))
             {
                 var deserializer = new DeserializerBuilder()
-                    .Build();
+                 .WithNamingConvention(new CamelCaseNamingConvention())
+                 .Build();
 
-                props = deserializer.Deserialize<Properties.ApplicationProperties>(input);
+                props = deserializer.Deserialize<ApplicationProperties>(input);
             }
 
             var appLCM = new LCM.LCM.LCM();
+            string rtmaServer = props.Rtma.Host + ":" + props.Rtma.Port;
 
             LCMReceiver lcmReceiver = new LCMReceiver();
-            lcmReceiver.receive(props.LcmParseRate);
+            lcmReceiver.receive(props.Lcm.ParseRate, props);
 
             LCMTransmitter lcmTransmitter = new LCMTransmitter();
+            RTMATransmitter rtmaTransmitter = new RTMATransmitter(rtmaServer);
 
-            RTMAReceiver rtmaReceiver = new RTMAReceiver("localhost:7111", lcmTransmitter);
+            RTMAReceiver rtmaReceiver = new RTMAReceiver(rtmaServer, lcmTransmitter);
             
             while (true) {
-
                 rtmaReceiver.receive();
- 
-                System.Threading.Thread.Sleep(1000);
             };
+
+            rtmaReceiver.disconnect();
+            rtmaTransmitter.disconnect();
         }
     }
 }
