@@ -14,13 +14,13 @@ namespace LCMRTMAConnector.Transmission
         {
             this.server = server;
             this.mod = new Module();
+            mod.ConnectToMMM(MID.LCMRTMA_TRANSMITTER, server);
         }
 
-        public void transmit(short msgTarget, int msgType, object data)
+        public void transmit( int msgType, object data)
         {
-            mod.ConnectToMMM(msgTarget, server);
 
-            Utils.lcmTransmitterMessage("Transmitting {0} message to {1}", msgType, msgTarget);
+            Utils.rtmaTransmitterMessage("Transmitting {0} message", msgType);
 
             mod.SendMessage(msgType, data);
         }

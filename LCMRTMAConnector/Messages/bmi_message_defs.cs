@@ -128,7 +128,8 @@ namespace Dragonfly
         public const int COORDINATOR_CLIENT_4 = 44;
         public const int COORDINATOR_CLIENT_5 = 45;
         public const int COORDINATOR_CLIENT_6 = 46;
-        public const int LCMRTMA_CONNECTOR = 50;
+        public const int LCMRTMA_RECEIVER = 50;
+        public const int LCMRTMA_TRANSMITTER = 51;
     }
 
     public class HID

@@ -60,7 +60,7 @@ namespace LCMRTMAConnector.Receipt
                     MDF.NEURAL_DECODER_OUTPUT rtmaOut = new MDF.NEURAL_DECODER_OUTPUT();
                     rtmaOut.decoderoutput = lcmIn.decoderoutput;
                     rtmaOut.timestamp = (int)lcmIn.timestamp;
-                    rtmaTransmitter.transmit(MID.NEURAL_DECODER, MT.NEURAL_DECODER_OUTPUT, rtmaOut);
+                    rtmaTransmitter.transmit( MT.NEURAL_DECODER_OUTPUT, rtmaOut);
                 }
             }
         }

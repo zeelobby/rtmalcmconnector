@@ -30,12 +30,13 @@ namespace LCMRTMAConnector
             var appLCM = new LCM.LCM.LCM();
             string rtmaServer = props.Rtma.Host + ":" + props.Rtma.Port;
 
+            RTMATransmitter rtmaTransmitter = new RTMATransmitter(rtmaServer );
+
             LCMReceiver lcmReceiver = new LCMReceiver();
-            lcmReceiver.receive(props.Lcm.ParseRate, props);
+            lcmReceiver.receive(props.Lcm.ParseRate, props, rtmaTransmitter);
 
             LCMTransmitter lcmTransmitter = new LCMTransmitter();
-            RTMATransmitter rtmaTransmitter = new RTMATransmitter(rtmaServer);
-
+           
             RTMAReceiver rtmaReceiver = new RTMAReceiver(rtmaServer, lcmTransmitter);
             
             while (true) {

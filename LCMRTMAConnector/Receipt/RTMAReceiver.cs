@@ -16,7 +16,7 @@ namespace LCMRTMAConnector.Receipt
             this.mod = new Module();
             this.server = server;
             this.lCMTransmitter = lCMTransmitter;
-            mod.ConnectToMMM(MID.LCMRTMA_CONNECTOR, server);
+            mod.ConnectToMMM(MID.LCMRTMA_RECEIVER, server);
             mod.Subscribe(MT.NEURAL_DECODER_OUTPUT);
 
             Utils.rtmaReceiverMessage("RTMAReceiver Listening...");
